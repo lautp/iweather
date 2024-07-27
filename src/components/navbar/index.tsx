@@ -15,8 +15,6 @@ import MenuItem from "@mui/material/MenuItem";
 import ThermostatIcon from "@mui/icons-material/Thermostat";
 import ManageAccountsOutlinedIcon from "@mui/icons-material/ManageAccountsOutlined";
 
-import { User } from "../../routes/login/types";
-
 import { useNavigate, useLocation } from "react-router-dom";
 
 const NavBar: React.FC = () => {

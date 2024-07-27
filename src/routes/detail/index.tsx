@@ -26,8 +26,6 @@ const Detail: React.FC = () => {
         detailsFetch();
     }, []);
 
-    console.log(currentCity);
-
     return (
         <Stack
             spacing={2}
@@ -54,6 +52,7 @@ const Detail: React.FC = () => {
                                 <div className="border-t-2 pt-3 border-sky-200">
                                     <h1 className="text-left text-lg font-[roboto] capitalize">
                                         {currentCity.forecast?.forecastday &&
+                                            el &&
                                             dayjs(
                                                 currentCity.forecast
                                                     ?.forecastday[index].date

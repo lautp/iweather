@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/user";
 
 const Register: React.FC = () => {
-    const { user, setUser } = useContext(UserContext);
+    const { user: _user, setUser } = useContext(UserContext);
     const [email, setMail] = useState<string>("");
     const [password, setPass] = useState<string>("");
     const [showPassword, setShowPassword] = useState<Boolean>(false);
