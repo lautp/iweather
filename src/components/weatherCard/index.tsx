@@ -25,7 +25,7 @@ const WeatherCard: React.FC<any> = ({ detail }) => {
     return (
         <>
             <h1 className="text-center font-bold text-xl font-[roboto]">
-                {city || detail.location.name}
+                {detail.location.name || city}
             </h1>
             <div className="w-full flex justify-center">
                 <img src={detail.current.condition.icon} alt="" />

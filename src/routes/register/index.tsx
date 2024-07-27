@@ -15,6 +15,7 @@ const Register: React.FC = () => {
     const [email, setMail] = useState<string>("");
     const [password, setPass] = useState<string>("");
     const [showPassword, setShowPassword] = useState<Boolean>(false);
+    const [showError, setShowError] = useState<Boolean>(false);
 
     const navigate = useNavigate();
 
@@ -25,12 +26,17 @@ const Register: React.FC = () => {
         event.preventDefault();
     };
     const handleClick = () => {
-        localStorage.setItem(
-            "user",
-            JSON.stringify({ email: email, password: password, auth: true })
-        );
-        setUser({ email: email, password: password, auth: true });
-        navigate("/home");
+        console.log(email, password);
+        if (email.length === 0 || password.length === 0) {
+            setShowError(true);
+        } else {
+            localStorage.setItem(
+                "user",
+                JSON.stringify({ email: email, password: password, auth: true })
+            );
+            setUser({ email: email, password: password, auth: true });
+            navigate("/home");
+        }
     };
 
     return (
@@ -51,6 +57,7 @@ const Register: React.FC = () => {
                 type="usuario"
                 value={email}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    setShowError(false);
                     setMail(e.target.value);
                 }}
                 onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) => {
@@ -81,9 +88,15 @@ const Register: React.FC = () => {
                 }}
                 value={password}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    setShowError(false);
                     setPass(e.target.value);
                 }}
             />
+            {showError && (
+                <h1 className=" font-semibold text-red-600">
+                    completar todos los campos
+                </h1>
+            )}
             <Button
                 variant="contained"
                 onClick={() => {
